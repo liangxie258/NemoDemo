@@ -9,7 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".RecycleActivity"></activity>
+        <activity android:name=".ExpandActivity"></activity>
+        <activity android:name=".CoordinatorActivity">
+
+        </activity>
+        <activity android:name=".Swipe2Activity">
+
+        </activity>
+        <activity android:name=".scroll.ScrollActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

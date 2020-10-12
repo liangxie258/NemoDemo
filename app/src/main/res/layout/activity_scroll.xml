@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="true">
+    <!--clipChildren为false的时候，父控件不会对child进行截取，超出child的绘制也会显示出来。
+    所有的view使用的是同一个canvas对象。因为在view绘制完成之后会调用clipRect方法对view的显示区域
+    进行截取。所以View才只能显示自己范围内的绘制内容。-->
+
+    <Button
+        android:id="@+id/btn_scroll"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:text="移动"></Button>
+
+    <com.nemo.demo.scroll.TestView2
+        android:id="@+id/tv_srcoll"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:layout_centerInParent="true"
+        ></com.nemo.demo.scroll.TestView2>
+
+</RelativeLayout>
