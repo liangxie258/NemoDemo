@@ -1,4 +1,4 @@
-package com.nemo.demo;
+package com.nemo.demo.recycle;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -20,6 +20,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.nemo.demo.R;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 

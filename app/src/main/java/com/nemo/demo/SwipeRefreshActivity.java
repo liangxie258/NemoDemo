@@ -18,7 +18,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class Swipe2Activity extends AppCompatActivity {
+public class SwipeRefreshActivity extends AppCompatActivity {
 
     @BindView(R.id.rv_list)
     RecyclerView rvList;

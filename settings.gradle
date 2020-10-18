@@ -1,2 +1,4 @@
+include ':imageselector'
+include ':emoji'
 include ':app'
 rootProject.name='Demo'
