@@ -9,22 +9,29 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
+import android.widget.ListView;
 import android.widget.TextView;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.nemo.demo.Constants;
 import com.nemo.demo.R;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class RecycleActivity extends AppCompatActivity {
 
@@ -32,10 +39,29 @@ public class RecycleActivity extends AppCompatActivity {
 
     @BindView(R.id.rv_main_list)
     RecyclerView rvMainList;
+    @BindView(R.id.add)
+    TextView add;
+
+    DataAdapter dataAdapter;
 
     private char[] letters = new char[26];
 
     private List<String> datas;
+
+    @OnClick(R.id.add)
+    public void onViewClicked() {
+//        datas.remove(1);
+//        dataAdapter.notifyItemRemoved(1);
+
+        Animation animation = new TranslateAnimation(0, 50, 0, 50);
+        animation.setDuration(5000);
+        View view0 = rvMainList.getLayoutManager().getChildAt(0);
+        View view1 = rvMainList.getLayoutManager().getChildAt(1);
+        View view2 = rvMainList.getLayoutManager().getChildAt(2);
+        view0.startAnimation(animation);
+        view1.startAnimation(animation);
+        view2.startAnimation(animation);
+    }
 
     public interface ItemInitial {
         char getItemInitial(int position);
@@ -52,18 +78,20 @@ public class RecycleActivity extends AppCompatActivity {
 //        rvMainList.addItemDecoration(new Divider());
 //        rvMainList.addItemDecoration(new LeftTag());
 //        rvMainList.addItemDecoration(new Header());
-        rvMainList.addItemDecoration(new StickHeader());
+//        rvMainList.addItemDecoration(new StickHeader());
         initData();
-        rvMainList.setAdapter(new DataAdapter());
+        dataAdapter = new DataAdapter();
+        rvMainList.setAdapter(dataAdapter);
+//        rvMainList.setItemAnimator(new DefaultItemAnimator());
     }
 
     private void initData() {
         datas = new ArrayList<>();
         for (byte i = 0; i < 26; i++) {
             letters[i] = (char) ('A' + i);
+            datas.add(String.valueOf(letters[i]));
         }
         Log.i(TAG, Arrays.toString(letters));
-
     }
 
     class DataAdapter extends RecyclerView.Adapter implements ItemInitial {
@@ -78,17 +106,21 @@ public class RecycleActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
             DataViewHolder dataViewHolder = (DataViewHolder) holder;
-            dataViewHolder.tvRecycleContent.setText(letters[position] + "");
+//            dataViewHolder.tvRecycleContent.setText(letters[position] + "");
+            dataViewHolder.tvRecycleContent.setText(datas.get(position) + "");
         }
 
         @Override
         public int getItemCount() {
-            return letters.length;
+            return datas.size();
+//            return letters.length;
         }
 
         @Override
         public char getItemInitial(int position) {
-            return letters[position];
+            char cccc = datas.get(position).toCharArray()[0];
+            return cccc;
+//            return letters[position];
         }
 
         class DataViewHolder extends RecyclerView.ViewHolder {
@@ -296,7 +328,7 @@ public class RecycleActivity extends AppCompatActivity {
                         // 文字baseline在y轴方向的位置
                         float baseLineY = Math.abs(paint.ascent() + paint.descent()) / 2;
                         c.drawRect(new Rect(0, bottom - 50, parentWidth, bottom), paint);
-                        c.drawText(firstInitial + "", (parentWidth - textWidth) / 2, bottom - (25 - baseLineY) , textpaint);
+                        c.drawText(firstInitial + "", (parentWidth - textWidth) / 2, bottom - (25 - baseLineY), textpaint);
                     } else {
                         // 文字宽
                         float textWidth = paint.measureText(firstInitial + "");
@@ -321,3 +353,4 @@ public class RecycleActivity extends AppCompatActivity {
         }
     }
 }
+

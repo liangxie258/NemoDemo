@@ -27,6 +27,8 @@
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
+    <!-- app:layout_behavior="@string/appbar_scrolling_view_behavior"
+         behavior的作用是给AppBarLayout添加behavior-->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

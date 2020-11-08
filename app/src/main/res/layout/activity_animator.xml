@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.nemo.demo.animator.MoveImageView
+        android:id="@+id/move_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        ></com.nemo.demo.animator.MoveImageView>
+
+<!--  当View移出屏幕外的时候只会进行测量，定位，不会进行onDraw绘制
+   android:layout_marginBottom="-200dp"-->
+
+</RelativeLayout>

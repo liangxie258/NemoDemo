@@ -27,7 +27,7 @@ public class SimpleRecycleAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        Log.i(Constants.TAG, "onBindViewHolder      position : " + position);
+//        Log.i(Constants.TAG, "onBindViewHolder      position : " + position);
     }
 
     @Override
